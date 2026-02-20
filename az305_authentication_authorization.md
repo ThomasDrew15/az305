@@ -225,7 +225,7 @@ Do you need MFA, device rules, or risk-based access?
 
 ---
 
-## Side‑by‑Side Comparison (Exam‑Ready)
+## Side‑by‑Side Comparison (Authentication Methods)
 
 | Capability / Need | Entra ID | B2C | B2B | Managed Identity | RBAC | App Roles / Scopes | APIM + OAuth2 | Conditional Access |
 |---|---|---|---|---|---|---|---|---|
@@ -241,6 +241,139 @@ Do you need MFA, device rules, or risk-based access?
 | **Primary Purpose** | Identity provider | Customer identity | Partner identity | Workload identity | Resource access | App-level access | API security | Authentication policy |
 | **Multi-tenant?** | Yes | Yes | Yes | No | No | No | Yes | Yes |
 | **Scalable to Millions?** | Yes | Yes | Yes | N/A | Yes | Yes | Yes | Yes |
+
+---
+
+## Entra ID Licensing Tiers (Exam‑Critical)
+
+This is a **heavily tested** area on AZ-305—know these tiers cold.
+
+| Feature / Capability | Entra ID Free | Entra ID P1 | Entra ID P2 |
+|---|---|---|---|
+| **SSO** | ✔️ | ✔️ | ✔️ |
+| **User & group management** | ✔️ | ✔️ | ✔️ |
+| **Hybrid identity (AD Connect)** | ❌ | ✔️ | ✔️ |
+| **Conditional Access** | ❌ | ✔️ | ✔️ |
+| **Full MFA policies** | ❌ | ✔️ | ✔️ |
+| **Dynamic groups** | ❌ | ✔️ | ✔️ |
+| **Identity Protection** | ❌ | ❌ | ✔️ |
+| **Risk‑based Conditional Access** | ❌ | ❌ | ✔️ |
+| **Privileged Identity Management (PIM)** | ❌ | ❌ | ✔️ |
+| **Full Identity Governance** | ❌ | Limited | ✔️ |
+
+### What Each Tier Includes
+
+**Entra ID Free**
+- Basic identity and SSO
+- User and group management
+- No advanced features
+- No hybrid identity
+
+**Entra ID P1**
+- Everything in Free, plus:
+- Conditional Access (basic)
+- Hybrid identity (AD Connect)
+- Dynamic groups
+- MFA policies
+- Self-service password reset
+
+**Entra ID P2**
+- Everything in P1, plus:
+- Identity Protection (risk detection)
+- Privileged Identity Management (just-in-time admin access)
+- Risk-based Conditional Access
+- Full identity governance
+- Advanced threat protection
+
+### Exam Scenarios with Entra ID Tiers
+
+**Scenario 1: "We need hybrid identity with on-premises AD"**
+- Answer: **Entra ID P1** (minimum for AD Connect)
+
+**Scenario 2: "We need to enforce MFA based on sign-in risk"**
+- Answer: **Entra ID P2** (risk-based Conditional Access)
+
+**Scenario 3: "We need just-in-time elevated permissions for admins"**
+- Answer: **Entra ID P2** (Privileged Identity Management)
+
+**Scenario 4: "We need basic SSO for our cloud apps"**
+- Answer: **Entra ID Free** (that's all you need)
+
+**Scenario 5: "We need to detect compromised credentials automatically"**
+- Answer: **Entra ID P2** (Identity Protection)
+
+---
+
+## Entra ID Licensing Memory Tricks
+
+### Quick Recall
+
+**Free → Basic**
+- Just identity and SSO
+- No advanced features
+
+**P1 → Enterprise**
+- Hybrid identity
+- Conditional Access
+- Policies and governance
+
+**P2 → Zero‑Trust Security**
+- Risk detection
+- Just-in-time access
+- Full identity protection
+
+### The Progression
+
+```
+Free
+ ↓
+P1 (Add: Hybrid + Conditional Access + Policies)
+ ↓
+P2 (Add: Risk Detection + PIM + Advanced Governance)
+```
+
+### Exam Trigger Words
+
+| Keyword | Tier |
+|---|---|
+| "Hybrid identity" | P1+ |
+| "Conditional Access" | P1+ |
+| "Risk-based" | P2 |
+| "PIM" or "just-in-time" | P2 |
+| "Identity Protection" | P2 |
+| "Detect risky sign-ins" | P2 |
+| "Dynamic groups" | P1+ |
+| "MFA policies" | P1+ |
+| "Basic SSO" | Free |
+
+---
+
+## Common Exam Traps (Licensing)
+
+### Trap 1: Assuming Free Supports Conditional Access
+
+**Wrong:** "We use Entra ID Free and enable Conditional Access"
+**Right:** Conditional Access requires P1 or P2
+
+### Trap 2: Forgetting Hybrid Identity Costs
+
+**Wrong:** "We need AD Connect, so Free is enough"
+**Right:** AD Connect (hybrid identity) requires P1 or P2
+
+### Trap 3: Thinking PIM is in P1
+
+**Wrong:** "We'll use P1 for just-in-time admin access"
+**Right:** PIM requires P2
+
+### Trap 4: Assuming All MFA is the Same
+
+**Wrong:** "P1 has full MFA policies"
+**Right:** P1 has basic MFA; P2 has risk-based MFA
+
+### Trap 5: Not Considering Identity Protection
+
+**Wrong:** "We don't need to detect compromised accounts"
+**Right:** Identity Protection (P2) is critical for zero-trust security
 
 ---
 
